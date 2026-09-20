@@ -81,8 +81,6 @@ COPY --from=web-build /repo/web/.next/static \
 COPY --from=web-build /repo/web/public \
     /app/web/public
 
-COPY docker/api-entrypoint.sh /entrypoint.sh
-
 RUN mkdir -p /data \
     && chown -R telagent:telagent /app /data
 
