@@ -154,14 +154,14 @@ def set_session_cookie(response: Response, token: str, *, secure: bool) -> None:
         token,
         max_age=int(SESSION_LIFETIME.total_seconds()),
         httponly=True,
-        samesite="lax",
+        samesite="none",
         secure=secure,
         path="/",
     )
 
 
 def clear_session_cookie(response: Response, *, secure: bool) -> None:
-    response.delete_cookie(COOKIE_NAME, path="/", httponly=True, samesite="lax", secure=secure)
+    response.delete_cookie(COOKIE_NAME, path="/", httponly=True, samesite="none", secure=secure)
 
 
 def token_from_request(request: Request) -> str | None:
